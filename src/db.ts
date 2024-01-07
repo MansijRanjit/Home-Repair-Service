@@ -11,6 +11,7 @@ const knexConfig: Knex.Config = {
     ...baseKnexConfig.connection,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     typeCast: (field: any, next: NextFunction) => {
+      // convert the value of a field with type "DATE" to a string when retrieved from the database
       if (field.type == "DATE") {
         return field.string();
       }
