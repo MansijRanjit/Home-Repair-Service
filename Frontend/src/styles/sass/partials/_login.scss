@@ -1,0 +1,93 @@
+
+body,input{
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-container{
+  background-image: url("../../../assets/images/Handyman-Repairs.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.login-container {
+  position: relative;
+  min-height: 100vh;
+  background-color:white;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background:rgb(235, 232, 232);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 580px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.title{
+  font-size: 30px;
+  font-weight: 600;
+  color: #232836;
+  text-align: center;
+  margin: 0;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__input-field{
+    height:45px;
+    width: 100%;
+    margin-top:20px;
+  }
+  input{
+    width: 100%;
+    border: 1px solid black;
+    height: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 400;
+
+  }
+  .btn{
+    border: none;
+    height:45px;
+    margin-top: 20px;
+    background-color: rgb(79, 79, 208);
+  }
+
+  &__form-link{
+    text-align: center;
+    margin-top: 10px;
+
+    span,a{
+      font-size: 14px;
+      color: #232836;
+    }
+    a{
+      color: #0171d3;
+      text-decoration: none;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
+  }
+}
