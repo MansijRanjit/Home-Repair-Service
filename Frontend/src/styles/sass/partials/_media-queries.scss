@@ -1,11 +1,23 @@
+@mixin tablet-signIn{
+  @media screen and (max-width:650px){
+      @content;
+  }
+}
+
+@mixin mobile-signIn{
+  @media screen and (max-width:480px){
+      @content;
+  }
+}
+
 @mixin tablet{
-  @media screen and (max-width:768px){
+  @media screen and (max-width:1024px){
       @content;
   }
 }
 
 @mixin mobile{
-  @media screen and (max-width:480px){
-      @content;
+  @media screen and (max-width:480px) {
+    @content;
   }
 }

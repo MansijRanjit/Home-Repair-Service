@@ -329,11 +329,9 @@ body, input {
 .login-container {
   position: relative;
   min-height: 100vh;
-  background-color: white;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  gap: 20px;
   align-items: center;
 }
 
@@ -347,6 +345,16 @@ body, input {
   max-width: 580px;
   padding: 30px;
   box-sizing: border-box;
+}
+@media screen and (max-width: 650px) {
+  .form-container {
+    max-width: 430px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .form-container {
+    max-width: 300px;
+  }
 }
 
 .title {
@@ -370,7 +378,7 @@ body, input {
 }
 .login-form input {
   width: 100%;
-  border: 1px solid black;
+  border: none;
   height: 100%;
   padding: 0 15px;
   box-sizing: border-box;
@@ -378,11 +386,21 @@ body, input {
   font-size: 16px;
   font-weight: 400;
 }
+.login-form input:focus {
+  border: 2px solid #4AA2F2 !important;
+  box-shadow: none !important;
+  outline: none;
+}
 .login-form .btn {
   border: none;
   height: 45px;
   margin-top: 20px;
-  background-color: rgb(79, 79, 208);
+  background-color: #4AA2F2;
+  cursor: pointer;
+}
+.login-form .btn:hover {
+  background-color: #79BAF6;
+  color: #353b4b;
 }
 .login-form__form-link {
   text-align: center;
@@ -397,7 +415,243 @@ body, input {
   text-decoration: none;
 }
 .login-form__form-link a:hover {
+  color: #036bc6;
   text-decoration: underline;
+  cursor: pointer;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 0 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(231, 231, 225);
+}
+@media screen and (max-width: 1024px) {
+  .navbar {
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.navbar__logo h2 {
+  color: #4AA2F2;
+  font-size: 30px;
+  cursor: pointer;
+}
+.navbar__menu {
+  display: flex;
+}
+.navbar__menu button {
+  width: 170px;
+  height: 82px;
+  border: none;
+  align-items: center;
+  background-color: rgb(231, 231, 225);
+  color: gray;
+  cursor: pointer;
+}
+.navbar__menu button:hover {
+  background-color: gainsboro;
+}
+@media screen and (max-width: 480px) {
+  .navbar__menu button {
+    max-width: 110px;
+    max-height: 61px;
+  }
+}
+.navbar__menu .active-btn {
+  color: #4AA2F2;
+  border-top: 5px solid #4AA2F2;
+}
+@media screen and (max-width: 1024px) {
+  .navbar__menu {
+    order: 3;
+  }
+}
+.navbar__buttons {
+  display: flex;
+  gap: 32px;
+}
+.navbar__buttons button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+@media screen and (max-width: 480px) {
+  .navbar__buttons button {
+    padding: 6px 12px;
+  }
+}
+.navbar__buttons .btn-login {
+  color: #4AA2F2;
+  background-color: white;
+}
+.navbar__buttons .btn-login:hover {
+  background-color: #d6e0e8;
+}
+.navbar__buttons .btn-signup {
+  color: white;
+  background-color: #4AA2F2;
+}
+.navbar__buttons .btn-signup:hover {
+  background-color: #13487a;
+}
+@media screen and (max-width: 1024px) {
+  .navbar__buttons {
+    order: 2;
+    margin: 10px 10px 25px 20px;
+  }
+}
+
+.find-section {
+  padding: 144px 54px 80px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media screen and (max-width: 1024px) {
+  .find-section {
+    padding: 284px 64px 80px 64px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .find-section {
+    padding: 284px 40px 40px 40px;
+  }
+}
+.find-section__top h1 span {
+  color: #4AA2F2;
+}
+.find-section__bottom {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 1024px) {
+  .find-section__bottom {
+    gap: 10px;
+  }
+}
+.find-section__bottom .findProfession {
+  height: 100%;
+  padding: 18px 18px 18px 18px;
+  width: 733px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  border-radius: 4px 0px 0px 4px;
+  border: 1px solid rgba(20, 20, 20, 0.1);
+  background: #FFF;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  width: 733px;
+}
+.find-section__bottom .findProfession input {
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+.find-section__bottom .findProfession input:focus {
+  border: none;
+  outline: none;
+}
+.find-section__bottom .findProfession:hover {
+  border: 2px solid black;
+}
+.find-section__bottom .Location {
+  height: 100%;
+  padding: 18px 18px 18px 18px;
+  width: 733px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  border-radius: 4px 0px 0px 4px;
+  border: 1px solid rgba(20, 20, 20, 0.1);
+  background: #FFF;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  width: 420px;
+}
+.find-section__bottom .Location input {
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+.find-section__bottom .Location input:focus {
+  border: none;
+  outline: none;
+}
+.find-section__bottom .Location:hover {
+  border: 2px solid black;
+}
+.find-section__bottom .btn-big {
+  padding: 18px 40px;
+  margin-left: 2px;
+  color: white;
+  background-color: #4AA2F2;
+  border: none;
+  border-radius: 6px;
+}
+.find-section__bottom .btn-big:hover {
+  background-color: #13487a;
+  cursor: pointer;
+}
+
+.technician-display {
+  padding: 48px 64px 64px 64px;
+  background-color: #FAFAFA;
+}
+.technician-display .cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.technician-display .profile-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 600px;
+  border: 2px solid black;
+  border-radius: 9px;
+  padding: 12px;
+  background-color: white;
+}
+.technician-display .profile-card__pic {
+  display: flex;
+  align-items: center;
+}
+.technician-display .profile-card__info {
+  display: flex;
+  flex-direction: column;
+}
+.technician-display .profile-card__info .fieldWithIcon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.technician-display .profile-card__info .profession-name {
+  color: #4AA2F2;
+  margin: 0;
 }
 
 /*# sourceMappingURL=style.css.map */

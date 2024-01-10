@@ -16,11 +16,9 @@ body,input{
 .login-container {
   position: relative;
   min-height: 100vh;
-  background-color:white;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  gap: 20px;
   align-items: center;
 }
 
@@ -35,6 +33,14 @@ body,input{
   max-width: 580px;
   padding: 30px;
   box-sizing: border-box;
+
+  @include tablet-signIn{
+    max-width: 430px;
+  }
+  
+  @include mobile-signIn{
+    max-width:300px;
+  }
 }
 
 .title{
@@ -58,20 +64,30 @@ body,input{
   }
   input{
     width: 100%;
-    border: 1px solid black;
+    border: none;
     height: 100%;
     padding: 0 15px;
     box-sizing: border-box;
     border-radius: 6px;
     font-size: 16px;
     font-weight: 400;
-
+    &:focus{
+      border: 2px solid #4AA2F2 !important;
+      box-shadow: none !important;
+      outline: none;
+    }
   }
+
   .btn{
     border: none;
     height:45px;
     margin-top: 20px;
-    background-color: rgb(79, 79, 208);
+    background-color: #4AA2F2;
+    cursor: pointer;
+    &:hover{
+      background-color:#79BAF6 ;
+      color:#353b4b
+    }
   }
 
   &__form-link{
@@ -87,7 +103,9 @@ body,input{
       text-decoration: none;
     }
     a:hover{
+      color: #036bc6;
       text-decoration: underline;
+      cursor: pointer;
     }
   }
 }

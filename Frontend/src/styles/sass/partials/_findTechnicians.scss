@@ -1,0 +1,127 @@
+.find-section{
+  padding:144px 54px 80px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include tablet{
+    padding: 284px 64px 80px 64px;
+  }
+  @include mobile{
+    padding: 284px 40px 40px 40px;
+  }
+
+  &__top{
+    h1 span{
+      color: #4AA2F2;
+    }
+  }
+
+  &__bottom{
+    margin-top: 40px;
+   // height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include tablet{
+      gap:10px;
+    }
+
+    @mixin input-box{
+      height: 100%;
+      padding: 18px 18px 18px 18px;
+      width: 733px;
+      display: flex;
+      align-items: center;
+      gap:16px;
+
+      border: 1px solid black;
+      box-sizing: border-box;
+      border-radius: 4px 0px 0px 4px;
+      border: 1px solid rgba(20, 20, 20, 0.10);
+      background: #FFF;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+      input{
+        height: 100%;
+        width: 100%;
+        border: none;
+        &:focus{
+          border: none;
+          outline: none;
+        }
+      }
+      &:hover{
+        border: 2px solid black;
+      }
+    }
+    
+    .findProfession{
+      @include input-box();
+      width: 733px;
+      @include mobile{
+
+      }
+    }
+    .Location{
+      @include input-box();
+      width: 420px;
+    }
+    .btn-big{
+      padding: 18px 40px;
+      margin-left: 2px;
+      color: white;
+      background-color: #4AA2F2;
+      border: none;
+      border-radius: 6px;
+
+      &:hover{
+        background-color: #13487a;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.technician-display{
+  padding: 48px 64px 64px 64px;
+  background-color: #FAFAFA;
+  .cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .profile-card{
+    display: flex;
+    flex-direction: row;
+    //gap:20px;
+    justify-content: space-around;
+    width: 600px;
+    border: 2px solid black;
+    border-radius: 9px;
+    padding:12px;
+    background-color: white;
+
+    &__pic{
+      display: flex;
+      align-items: center;
+    }
+
+    &__info{
+      display: flex;
+      flex-direction: column;
+      .fieldWithIcon{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .profession-name{
+        color: #4AA2F2;
+        margin: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+.navbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+
+  padding: 0 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(231, 231, 225);
+  @include tablet{
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  &__logo{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    h2{
+      color: #4AA2F2;
+      font-size:30px ;
+      cursor: pointer;
+    }
+  }
+
+  &__menu{
+    display: flex;
+
+    button{
+      width: 170px;
+      height: 82px;
+      border: none;
+      align-items: center;
+      background-color: rgb(231, 231, 225);
+      color: gray;
+      cursor: pointer;
+
+      &:hover{
+        background-color: gainsboro;
+      }
+      @include mobile{
+        max-width: 110px;
+        max-height: 61px;
+      }
+    }
+
+    .active-btn{
+      color: #4AA2F2;
+      border-top: 5px solid #4AA2F2;
+    }
+    @include tablet{
+      order: 3;
+    }
+  }
+
+  &__buttons{
+    display: flex;
+    gap:32px;
+
+    button{
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+
+      @include mobile{
+        padding: 6px 12px;
+      }
+    }
+    .btn-login{
+      color: #4AA2F2;
+      background-color: white;
+      &:hover{
+        background-color: #d6e0e8;
+      }
+    }
+    .btn-signup{
+      color: white;
+      background-color: #4AA2F2;
+      &:hover{
+        background-color: #13487a;
+      }
+    }
+    @include tablet{
+      order: 2;
+      margin: 10px 10px 25px 20px;
+    }
+  }
+}
