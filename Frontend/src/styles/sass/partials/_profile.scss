@@ -1,0 +1,75 @@
+.profile-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 130px 260px;
+
+  @include tablet{
+    padding: 330px 200px;
+  }
+  @include mobile{
+    padding: 300px 260px;
+  }
+ 
+}
+.manage-profile{
+  padding: 20px;
+  border: 2px solid gray;
+  border-radius: 9px;
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  //width:700px;
+
+  @include mobile{
+    //width: 300px;
+  }
+  h2{
+    color:#79BAF6;
+    @include mobile{
+      font-size: 20px;
+    }
+  }
+
+  &__form{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    .field{
+      margin-top: 10px;
+      // display: flex;
+      // flex-wrap: wrap;
+    }   
+  }
+  &__buttons{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    .btn{
+      padding: 10px 20px;
+      border:none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+    }
+    .btn-add{
+      background-color: green;
+      &:hover{
+        background-color: rgb(16, 171, 16);
+      }
+    }
+    .btn-update{
+      background-color: rgb(173, 173, 33);
+      &:hover{
+        background-color: rgb(214, 214, 39);
+      }
+    }
+    .btn-delete{
+      background-color: rgb(185, 20, 20);
+      &:hover{
+        background-color: rgb(232, 61, 61);
+      }
+    }
+  }
+}

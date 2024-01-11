@@ -1,0 +1,121 @@
+
+body,input{
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-container{
+  background-image: url("../../../assets/images/Handyman-Repairs.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  background:rgb(235, 232, 232);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 580px;
+  padding: 0 30px 20px 30px;
+  box-sizing: border-box;
+
+  @include tablet-signIn{
+    max-width: 430px;
+  }
+  
+  @include mobile-signIn{
+    max-width:300px;
+  }
+
+  .logo{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    h2{
+      color: #4AA2F2;
+      font-size:30px ;
+      cursor: pointer;
+    }
+  }
+  .title{
+    font-size: 24px;
+    font-weight: 600;
+    color: #232836;
+    text-align: center;
+    margin: 0;
+  }
+  #login-error-message{
+    color: red;
+    margin-top:15px;
+    text-align: center;
+  }
+  
+  .login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    &__input-field{
+      height:45px;
+      width: 100%;
+      margin-top:20px;
+    }
+    input{
+      width: 100%;
+      border: none;
+      height: 100%;
+      padding: 0 15px;
+      box-sizing: border-box;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 400;
+      &:focus{
+        border: 2px solid #4AA2F2 !important;
+        box-shadow: none !important;
+        outline: none;
+      }
+    }
+  
+    .btn{
+      border: none;
+      height:45px;
+      margin-top: 20px;
+      background-color: #4AA2F2;
+      cursor: pointer;
+      &:hover{
+        background-color:#79BAF6 ;
+        color:#353b4b
+      }
+    }
+  
+    &__form-link{
+      text-align: center;
+      margin-top: 10px;
+  
+      span,a{
+        font-size: 14px;
+        color: #232836;
+      }
+      a{
+        color: #0171d3;
+        text-decoration: none;
+      }
+      a:hover{
+        color: #036bc6;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,11 +1,11 @@
 .find-section{
-  padding:144px 54px 80px 64px;
+  padding:144px 54px 60px 64px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   @include tablet{
-    padding: 284px 64px 80px 64px;
+    padding: 284px 64px 60px 64px;
   }
   @include mobile{
     padding: 284px 40px 40px 40px;
@@ -19,7 +19,6 @@
 
   &__bottom{
     margin-top: 40px;
-   // height: 60px;
     display: flex;
     flex-wrap: wrap;
 
@@ -86,41 +85,49 @@
 }
 
 .technician-display{
-  padding: 48px 64px 64px 64px;
+  padding: 38px 64px 64px 64px;
   background-color: #FAFAFA;
   .cards{
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .profile-card{
-    display: flex;
-    flex-direction: row;
-    //gap:20px;
-    justify-content: space-around;
-    width: 600px;
-    border: 2px solid black;
-    border-radius: 9px;
-    padding:12px;
-    background-color: white;
-
-    &__pic{
+    gap: 20px;
+    justify-content: center;
+ 
+    .profile-card{
       display: flex;
-      align-items: center;
-    }
-
-    &__info{
-      display: flex;
-      flex-direction: column;
-      .fieldWithIcon{
+      flex-direction: row;
+      gap:30px;
+      width: 600px;
+      border: 2px solid gray;
+      border-radius: 9px;
+      padding:12px;
+      background-color: white;
+      @include tablet{
+        max-width: 400px;
+      }
+      @include mobile{
+        max-width: 200px;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+  
+      &__pic{
         display: flex;
         align-items: center;
-        gap: 10px;
       }
-      .profession-name{
-        color: #4AA2F2;
-        margin: 0;
+  
+      &__info{
+        display: flex;
+        flex-direction: column;
+        .fieldWithIcon{
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .profession-name{
+          color: #4AA2F2;
+          margin: 0;
+        }
       }
     }
   }

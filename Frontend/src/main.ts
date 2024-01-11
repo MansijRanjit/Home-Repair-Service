@@ -1,3 +1,3 @@
 window.onload = () => {
-  window.location.href = "/views/Login/";
+  window.location.href = "/views/LandingPage/";
 };

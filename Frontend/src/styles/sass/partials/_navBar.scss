@@ -51,6 +51,7 @@
     .active-btn{
       color: #4AA2F2;
       border-top: 5px solid #4AA2F2;
+      background-color: gainsboro;
     }
     @include tablet{
       order: 3;

@@ -13,6 +13,8 @@ export async function up(knex: Knex): Promise<void> {
   return knex.schema.createTable(TABLE_NAME, (table) => {
     table.bigIncrements();
 
+    table.string("fullname").notNullable();
+
     table.string("username").notNullable();
 
     table.string("email").notNullable();

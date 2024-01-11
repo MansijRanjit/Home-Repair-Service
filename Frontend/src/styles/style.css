@@ -323,12 +323,7 @@ body, input {
   height: 100vh;
   width: 100%;
   background-repeat: no-repeat;
-  overflow: hidden;
-}
-
-.login-container {
   position: relative;
-  min-height: 100vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -336,14 +331,14 @@ body, input {
 }
 
 .form-container {
+  margin: 20px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   background: rgb(235, 232, 232);
   border-radius: 8px;
   width: 100%;
   max-width: 580px;
-  padding: 30px;
+  padding: 0 30px 20px 30px;
   box-sizing: border-box;
 }
 @media screen and (max-width: 650px) {
@@ -356,27 +351,40 @@ body, input {
     max-width: 300px;
   }
 }
-
-.title {
+.form-container .logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.form-container .logo h2 {
+  color: #4AA2F2;
   font-size: 30px;
+  cursor: pointer;
+}
+.form-container .title {
+  font-size: 24px;
   font-weight: 600;
   color: #232836;
   text-align: center;
   margin: 0;
 }
-
-.login-form {
+.form-container #login-error-message {
+  color: red;
+  margin-top: 15px;
+  text-align: center;
+}
+.form-container .login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.login-form__input-field {
+.form-container .login-form__input-field {
   height: 45px;
   width: 100%;
   margin-top: 20px;
 }
-.login-form input {
+.form-container .login-form input {
   width: 100%;
   border: none;
   height: 100%;
@@ -386,35 +394,35 @@ body, input {
   font-size: 16px;
   font-weight: 400;
 }
-.login-form input:focus {
+.form-container .login-form input:focus {
   border: 2px solid #4AA2F2 !important;
   box-shadow: none !important;
   outline: none;
 }
-.login-form .btn {
+.form-container .login-form .btn {
   border: none;
   height: 45px;
   margin-top: 20px;
   background-color: #4AA2F2;
   cursor: pointer;
 }
-.login-form .btn:hover {
+.form-container .login-form .btn:hover {
   background-color: #79BAF6;
   color: #353b4b;
 }
-.login-form__form-link {
+.form-container .login-form__form-link {
   text-align: center;
   margin-top: 10px;
 }
-.login-form__form-link span, .login-form__form-link a {
+.form-container .login-form__form-link span, .form-container .login-form__form-link a {
   font-size: 14px;
   color: #232836;
 }
-.login-form__form-link a {
+.form-container .login-form__form-link a {
   color: #0171d3;
   text-decoration: none;
 }
-.login-form__form-link a:hover {
+.form-container .login-form__form-link a:hover {
   color: #036bc6;
   text-decoration: underline;
   cursor: pointer;
@@ -473,6 +481,7 @@ body, input {
 .navbar__menu .active-btn {
   color: #4AA2F2;
   border-top: 5px solid #4AA2F2;
+  background-color: gainsboro;
 }
 @media screen and (max-width: 1024px) {
   .navbar__menu {
@@ -516,14 +525,14 @@ body, input {
 }
 
 .find-section {
-  padding: 144px 54px 80px 64px;
+  padding: 144px 54px 60px 64px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 @media screen and (max-width: 1024px) {
   .find-section {
-    padding: 284px 64px 80px 64px;
+    padding: 284px 64px 60px 64px;
   }
 }
 @media screen and (max-width: 480px) {
@@ -618,40 +627,126 @@ body, input {
 }
 
 .technician-display {
-  padding: 48px 64px 64px 64px;
+  padding: 38px 64px 64px 64px;
   background-color: #FAFAFA;
 }
 .technician-display .cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
+  justify-content: center;
 }
-.technician-display .profile-card {
+.technician-display .cards .profile-card {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  gap: 30px;
   width: 600px;
-  border: 2px solid black;
+  border: 2px solid gray;
   border-radius: 9px;
   padding: 12px;
   background-color: white;
 }
-.technician-display .profile-card__pic {
+@media screen and (max-width: 1024px) {
+  .technician-display .cards .profile-card {
+    max-width: 400px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .technician-display .cards .profile-card {
+    max-width: 200px;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+.technician-display .cards .profile-card__pic {
   display: flex;
   align-items: center;
 }
-.technician-display .profile-card__info {
+.technician-display .cards .profile-card__info {
   display: flex;
   flex-direction: column;
 }
-.technician-display .profile-card__info .fieldWithIcon {
+.technician-display .cards .profile-card__info .fieldWithIcon {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.technician-display .profile-card__info .profession-name {
+.technician-display .cards .profile-card__info .profession-name {
   color: #4AA2F2;
   margin: 0;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 130px 260px;
+}
+@media screen and (max-width: 1024px) {
+  .profile-container {
+    padding: 330px 200px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .profile-container {
+    padding: 300px 260px;
+  }
+}
+
+.manage-profile {
+  padding: 20px;
+  border: 2px solid gray;
+  border-radius: 9px;
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+.manage-profile h2 {
+  color: #79BAF6;
+}
+@media screen and (max-width: 480px) {
+  .manage-profile h2 {
+    font-size: 20px;
+  }
+}
+.manage-profile__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+.manage-profile__form .field {
+  margin-top: 10px;
+}
+.manage-profile__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.manage-profile__buttons .btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+.manage-profile__buttons .btn-add {
+  background-color: green;
+}
+.manage-profile__buttons .btn-add:hover {
+  background-color: rgb(16, 171, 16);
+}
+.manage-profile__buttons .btn-update {
+  background-color: rgb(173, 173, 33);
+}
+.manage-profile__buttons .btn-update:hover {
+  background-color: rgb(214, 214, 39);
+}
+.manage-profile__buttons .btn-delete {
+  background-color: rgb(185, 20, 20);
+}
+.manage-profile__buttons .btn-delete:hover {
+  background-color: rgb(232, 61, 61);
 }
 
 /*# sourceMappingURL=style.css.map */
