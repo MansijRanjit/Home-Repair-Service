@@ -42,7 +42,9 @@
 
           <h2 class="title">Sign up</h2>
 
-          <form action="" class="login-form">
+          <div class="div" id="error-message"></div>
+
+          <form class="login-form">
             <div class="login-form__input-field">
               <input type="text" placeholder="Full Name" class="full-name" name="full-name" required/>
             </div>
@@ -64,6 +66,7 @@
             </div>
 
             <input type="submit" value="Signup" class="btn solid" />
+
             <div class="login-form__form-link">
               <span
                 >Already have an account?
@@ -76,5 +79,6 @@
         </div>
       </div>
     </div>
+    <script type="module" src="./script.ts"></script>
   </body>
 </html>

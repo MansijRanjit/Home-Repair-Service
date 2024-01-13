@@ -34,7 +34,6 @@
       align-items: center;
       gap:16px;
 
-      border: 1px solid black;
       box-sizing: border-box;
       border-radius: 4px 0px 0px 4px;
       border: 1px solid rgba(20, 20, 20, 0.10);
@@ -60,9 +59,6 @@
     .findProfession{
       @include input-box();
       width: 733px;
-      @include mobile{
-
-      }
     }
     .Location{
       @include input-box();
@@ -100,7 +96,7 @@
       width: 600px;
       border: 2px solid gray;
       border-radius: 9px;
-      padding:12px;
+      padding:20px;
       background-color: white;
       @include tablet{
         max-width: 400px;

@@ -8,6 +8,10 @@ export async function getAllProfile(){
   return await ProfileModel.getAllProfile();
 }
 
+export async function getProfileFiltered(professionValue:string,locationValue:string){
+  return await ProfileModel.getProfileFiltered(professionValue,locationValue);
+}
+
 export async function getProfile(userId:number){
   const profile= await ProfileModel.getProfile(userId);
   return profile;
@@ -28,14 +32,14 @@ export async function createProfile(userId:number,profileData:IProfile,professio
 }
 
 
-export async function updateProfile(userId:number,profileData:IProfile,professionData:IProfession){
+export async function updateProfile(userId:number,fullName:string,profileData:IProfile,professionData:IProfession){
   //Find profile by id
   const isExistingProfile= await ProfileModel.getProfile(userId);
   if(!isExistingProfile){
     throw new NotFoundError("Profile dont exist")
   }
 
-  const updatedProfile= await ProfileModel.updateProfile(userId,profileData,professionData);
+  const updatedProfile= await ProfileModel.updateProfile(userId,fullName,profileData,professionData);
   return updatedProfile;
 }
 

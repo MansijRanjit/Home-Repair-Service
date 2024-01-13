@@ -1,10 +1,10 @@
 import axios, { HttpStatusCode } from "axios";
 
-const form = document.querySelector(".form-container") as HTMLDivElement;
+const form = document.querySelector(".login-form") as HTMLFormElement;
 const signInUsername = document.querySelector(".username") as HTMLInputElement;
 const signInPassword = document.querySelector(".password") as HTMLInputElement;
 const loginErrorMessage = document.getElementById(
-  "login-error-message"
+  "error-message"
 ) as HTMLDivElement;
 
 const http = axios.create({
@@ -14,8 +14,8 @@ const http = axios.create({
 form?.addEventListener("submit", async (e) => {
   e.preventDefault();
   loginErrorMessage.style.display = "none";
-  const username = signInUsername.value;
-  const password = signInPassword.value;
+  const username = signInUsername.value.trim();
+  const password = signInPassword.value.trim();
 
   console.log({ username, password });
 

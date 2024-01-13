@@ -10,6 +10,20 @@ export async function getAllProfile(_req:Request,res:Response){
   }
 }
 
+export async function getProfileFiltered(req:Request,res:Response){
+  const result= req.params.searchData;
+  const filterArray= result.split(',').map(String);
+  const professionValue = filterArray[0];
+  const locationValue = filterArray[1];
+  
+  try {
+    const profiles= await profileServices.getProfileFiltered(professionValue,locationValue);
+    res.json(profiles);
+  } catch (error) {
+    res.status(500).json({message:"Something went wrong"})
+  }
+}
+
 export async function getProfile(req:any, res:Response){
   try {
     const profile = await profileServices.getProfile(req.user.id);
@@ -21,7 +35,7 @@ export async function getProfile(req:any, res:Response){
 
 export async function createProfile(req:any,res:Response){
   try {
-    const user=req.user;
+    const user=req.user;    
 
     const profileData={
       description:req.body.description,
@@ -47,6 +61,8 @@ export async function updateProfile(req:any, res:Response){
   try {
     const user=req.user;
 
+    const fullName=req.body.full_name;
+
     const profileData={
       description:req.body.description,
       available_time:req.body.available_time,
@@ -59,7 +75,7 @@ export async function updateProfile(req:any, res:Response){
       profession_name:req.body.profession_name
     }
 
-    const updatedProfile = await profileServices.updateProfile(user.id,profileData,professionData);
+    const updatedProfile = await profileServices.updateProfile(user.id,fullName,profileData,professionData);
     res.json({message:"Profile updated successfully"});
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });

@@ -13,7 +13,7 @@ export async function signup(body:ISignup){
   //Existing User check
   const isExistingUser = await userServices.getUserByUsername(body.username);
   if(isExistingUser){
-    throw new ConflictError("User already exist");
+    throw new ConflictError("User with the username already exists");
   }
 
   //Hashed Password
