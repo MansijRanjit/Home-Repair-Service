@@ -17,18 +17,18 @@ export async function getProfile(userId:number){
   return profile;
 }
 
-export async function createProfile(userId:number,profileData:IProfile,professionData:IProfession){
+export async function createProfile(userId:number,fullName:string,profileData:IProfile,professionData:IProfession){
   //Find profile by id
   const isExistingProfile= await ProfileModel.getProfile(userId);
   if(isExistingProfile){
     throw new BadRequestError("Profile already exist")
   }
 
-  const newProfile={
-    user_id:userId,
-    ...profileData
-  }
-  return ProfileModel.createProfile(newProfile,professionData);
+  // const newProfile={
+  //   user_id:userId,
+  //   ...profileData
+  // }
+  return ProfileModel.createProfile(userId,fullName,profileData,professionData);
 }
 
 

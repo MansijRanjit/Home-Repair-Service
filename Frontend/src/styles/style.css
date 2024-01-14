@@ -517,6 +517,9 @@ body, input {
 .navbar__buttons .btn-login:hover, .navbar__buttons .btn-logout:hover {
   background-color: #d6e0e8;
 }
+.navbar__buttons .btn-logout {
+  display: none;
+}
 .navbar__buttons .btn-signup {
   color: white;
   background-color: #4AA2F2;
@@ -714,6 +717,9 @@ body, input {
   .manage-profile h2 {
     font-size: 20px;
   }
+}
+.manage-profile .message {
+  color: red;
 }
 .manage-profile__form {
   display: flex;

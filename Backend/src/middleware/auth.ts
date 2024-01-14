@@ -12,7 +12,7 @@ export const auth= async (req:any,res:Response,next:NextFunction)=>{
     }
 
     const user = jwt.verify(token,config.jwt.accessTokenSecret!);
-    console.log(user);
+    //console.log(user);
     
     req.user=user;
 

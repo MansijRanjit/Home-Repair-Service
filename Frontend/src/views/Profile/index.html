@@ -8,6 +8,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- CSS -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
@@ -15,117 +16,82 @@
   </head>
   <body>
     <!-- Navbar Section  -->
-    <nav>
-      <div class="container">
-        <div class="navbar">
-          <div class="navbar__logo">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="36"
-              height="36"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#4AA2F2"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-wrench"
-            >
-              <path
-                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
-              />
-            </svg>
-            <h2 class="logoTitle">Home Repair Services</h2>
-          </div>
-          <div class="navbar__menu">
-            <a href="../LandingPage/index.html"
-              ><button>Find Technicians</button></a
-            >
-            <a href="../Profile/index.html"
-              ><button class="active-btn">Profile</button></a
-            >
-          </div>
-          <div class="navbar__buttons">
-            <a href="../Login/index.html"
-              ><button class="btn-login">Login</button></a
-            >
-            <a href="../Register/index.html"
-              ><button class="btn-signup">Sign Up</button></a
-            >
-          </div>
-        </div>
-      </div>
-    </nav>
-
+    <header class="nav-bar"></header>
+   
     <main>
       <div class="container profile-container">
         <div class="manage-profile">
           <h2>Manage your Profile</h2>
-          <form action="" class="manage-profile__form">
-            <div class="manage-profile__fullName field">
-              <label for="full-name">Full Name:</label>
-              <input type="text" name="full-name" id="full-name" />
-            </div>
+          <p class="message"></p>
 
-            <div class="manage-profile__profession field">
-              <label for="profession">Profession:</label>
-              <input
-                type="text"
-                name="profession"
-                id="profession"
-              />
+          <form enctype="multipart/form-data">
+            <div class="manage-profile__form">
+              <div class="manage-profile__fullName field">
+                <label for="full-name">Full Name:</label>
+                <input type="text" name="full-name" id="full-name" />
+              </div>
+  
+              <div class="manage-profile__profession field">
+                <label for="profession">Profession:</label>
+                <input
+                  type="text"
+                  name="profession"
+                  id="profession"
+                />
+              </div>
+  
+              <div class="manage_profile__image field">
+                <label for="image">Add image:</label>
+                <input type="file" name="image" accept="image/* id" id="image" >
+              </div>
+  
+              <div class="manage-profile__availableTime field">
+                <label for="available-time">Available Time:</label>
+                <input
+                  type="text"
+                  name="available-time"
+                  id="available-time"
+                />
+              </div>
+  
+              <div class="manage-profile__minimumCharge field">
+                <label for="minimum-charge">Minimum Charge:</label>
+                <input
+                  type="text"
+                  name="minimum-charge"
+                  id="minimum-charge"
+                />
+              </div>
+  
+              <div class="manage-profile__Location field">
+                <label for="location">Location:</label>
+                <input type="text" name="location" id="location" />
+              </div>
+  
+              <div class="manage-profile__contactNumber field">
+                <label for="contact-number">Contact Number:</label>
+                <input
+                  type="text"
+                  name="contact-number"
+                  id="contact-number"
+                />
+              </div>
+  
+              <div class="manage-profile__description field">
+                <label for="description">Description:</label>
+                <textarea type="text" name="description" id="description" rows="4" cols="40"></textarea>
+              </div>
             </div>
-
-            <div class="manage_profile__image field">
-              <label for="image">Add image:</label>
-              <input type="file" name="image" accept="image/* id" id="image" name="image" >
-            </div>
-
-            <div class="manage-profile__availableTime field">
-              <label for="available-time">Available Time:</label>
-              <input
-                type="text"
-                name="available-time"
-                id="available-time"
-              />
-            </div>
-
-            <div class="manage-profile__minimumCharge field">
-              <label for="minimum-charge">Minimum Charge:</label>
-              <input
-                type="text"
-                name="minimum-charge"
-                id="minimum-charge"
-              />
-            </div>
-
-            <div class="manage-profile__Location field">
-              <label for="location">Location:</label>
-              <input type="text" name="location" id="location" />
-            </div>
-
-            <div class="manage-profile__contactNumber field">
-              <label for="contact-number">Contact Number:</label>
-              <input
-                type="text"
-                name="contact-number"
-                id="contact-number"
-              />
-            </div>
-
-            <div class="manage-profile__description field">
-              <label for="description">Description:</label>
-              <textarea type="text" name="description" id="description" rows="4" cols="40"></textarea>
+            <div class="buttons">
+              <button type="submit" class="btn-add btn">Add</button>
+              <button type="submit" class="btn-update btn">Update</button>
+              <button type="submit" class="btn-delete btn">Delete</button>
             </div>
           </form>
-          <div class="buttons">
-            <button class="btn-add btn">Add</button>
-            <button class="btn-update btn">Update</button>
-            <button class="btn-delete btn">Delete</button>
-          </div>
-          
+
         </div>
       </div>
     </main>
+    <script type="module" src="./script.ts"></script>
   </body>
 </html>

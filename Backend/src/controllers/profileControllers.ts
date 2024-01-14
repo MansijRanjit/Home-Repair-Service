@@ -1,5 +1,8 @@
 import { Request,Response } from "express";
 import * as profileServices from "../services/profileServices"
+import HttpStatus from "http-status-codes";
+import { IProfile } from "../interface/profile";
+import { IProfession } from "../interface/profession";
 
 export async function getAllProfile(_req:Request,res:Response){
   try {
@@ -37,6 +40,8 @@ export async function createProfile(req:any,res:Response){
   try {
     const user=req.user;    
 
+    const fullName=req.body.full_name;
+
     const profileData={
       description:req.body.description,
       available_time:req.body.available_time,
@@ -44,13 +49,17 @@ export async function createProfile(req:any,res:Response){
       location:req.body.location,
       contact_number:req.body.contact_number,
     }
-
+    //const profileData:IProfile=req.body;
+    //console.log(profileData);
+    
     const professionData={
       profession_name:req.body.profession_name
     }
-
-    const newProfile = await profileServices.createProfile(user.id,profileData,professionData);
-    res.json({message:"New User Created succcefflly"});
+    //const professionData:IProfession=req.body;
+    //console.log(professionData);
+    
+    const newProfile = await profileServices.createProfile(user.id,fullName,profileData,professionData);
+    res.status(HttpStatus.CREATED).json({message:"New User Created succcefflly"});
   } catch (error) {
     //console.error('Error in creatingprofile',error);
     res.status(500).json({ message: "Something went wrong" });

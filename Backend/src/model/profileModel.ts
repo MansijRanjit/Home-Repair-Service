@@ -49,7 +49,7 @@ export default class ProfileModel extends BaseModel {
     return resultData;
   }
 
-  static async getProfile(user_id: number) {
+  static async getProfile(userId: number) {
     return this.queryBuilder()
       .select({
         user_name:"users.username",
@@ -63,13 +63,15 @@ export default class ProfileModel extends BaseModel {
         profession_name: "professions.profession_name",
       })
       .from("profiles")
-      .innerJoin("users","profiles.profile_id","users.id")
+      .innerJoin("users","users.id","profiles.user_id")
       .innerJoin("professions", "profiles.profile_id", "professions.profile_id")
-      .where("profiles.user_id", user_id)
+      .where("profiles.user_id", userId)
       .first();
   }
 
   static async createProfile(
+    userId:number,
+    fullName:string,
     profileData: IProfile,
     professionData: IProfession
   ) {
@@ -82,7 +84,7 @@ export default class ProfileModel extends BaseModel {
           minimum_charge: profileData.minimum_charge,
           location: profileData.location,
           contact_number: profileData.contact_number,
-          user_id: profileData.user_id,
+          user_id: userId,
         })
         .returning("profile_id");
 
@@ -92,6 +94,11 @@ export default class ProfileModel extends BaseModel {
       await trx("professions").insert({
         profession_name: professionData.profession_name,
         profile_id: profile.profileId,
+      });
+
+      //Update user table:
+      await trx("users").where({id:userId}).update({
+        fullname:fullName
       });
     });
   }
@@ -103,17 +110,17 @@ export default class ProfileModel extends BaseModel {
     professionData: IProfession
   ) {
     return this.queryBuilder().transaction(async (trx) => {
+      //Update user table:
+      await trx("users").where({id:userId}).update({
+        fullname:fullName
+      });
+
       //Find profile with profile_id associated with the provided user_id
       const [profile] = await trx("profiles")
         .where({ user_id: userId })
         .returning("profile_id");
 
       //console.log(profile,typeof(profile));
-
-      //Update user table:
-      await trx("users").where({id:userId}).update({
-        fullname:fullName
-      });
 
       //Update profiles table:
       await trx("profiles").where({ user_id: userId }).update({

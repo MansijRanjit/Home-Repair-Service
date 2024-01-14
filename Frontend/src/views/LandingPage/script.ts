@@ -1,72 +1,31 @@
 import axios from "axios";
+import { renderNavbar } from "../../components/Navbar/navbar";
 
 const http = axios.create({
   baseURL: "http://localhost:4000",
 });
 
-const loginButton = document.querySelector(".btn-login") as HTMLButtonElement;
-const signupButton = document.querySelector(".btn-signup") as HTMLButtonElement;
-const logoutButton = document.querySelector(".btn-logout") as HTMLButtonElement;
-const usernameDisplay = document.querySelector(
-  ".usernameDisplay"
-) as HTMLElement;
-
 //Onload
 document.addEventListener("DOMContentLoaded", async function () {
   try {
+    //Render Navbar
+    const navbar=document.querySelector(".nav-bar") as HTMLDivElement;
+    renderNavbar(navbar,"findTech");
+
+    //Render Profiles
     const response = await http({
       url: "/profile/all",
       method: "GET",
     });
     //console.log(response);
-
     const profiles = response.data;
-    //console.log(profiles);
-    //console.log(profiles.length);
     addCards(profiles);
 
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken) {
-      const response2 = await http({
-        url: "profile/",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-        method: "GET",
-      });
-      console.log(response2);
-
-      if (response2.data.userName) {
-        loggedInState();
-        usernameDisplay.textContent = `Welcome, ${response2.data.userName}`;
-        logoutButton.addEventListener("click", async function (e) {
-          e.preventDefault();
-          localStorage.clear();
-          loggedOutState();
-        });
-      } else {
-        loggedOutState();
-      }
-    }
   } catch (error) {
     console.log(error);
   }
 });
 
-function loggedOutState() {
-  logoutButton.style.display = "none";
-  loginButton.style.display = "block";
-  signupButton.style.display = "block";
-  usernameDisplay.style.display="none";
-}
-
-function loggedInState() {
-  loginButton.style.display = "none";
-  signupButton.style.display = "none";
-  logoutButton.style.display = "block";
-  usernameDisplay.style.display="block";
-
-}
 // Filter search
 const professionInput = document.querySelector(
   ".profession-input"
