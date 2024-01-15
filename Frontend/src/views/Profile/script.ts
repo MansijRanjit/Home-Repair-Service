@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import axios, { HttpStatusCode } from "axios";
 import { renderNavbar } from "../../components/Navbar/navbar";
 
@@ -23,7 +24,7 @@ const Description = document.getElementById(
 const registerErrorMessage = document.querySelector(
   ".message"
 ) as HTMLParagraphElement;
-const imageUpload=document.getElementById("image") as HTMLInputElement;
+const imageUpload = document.getElementById("image") as HTMLInputElement;
 
 const addButton = document.querySelector(".btn-add") as HTMLButtonElement;
 const updateButton = document.querySelector(".btn-update") as HTMLButtonElement;
@@ -35,9 +36,8 @@ const accessToken = localStorage.getItem("accessToken");
 document.addEventListener("DOMContentLoaded", async function (e) {
   e.preventDefault();
 
-  const navBar=document.querySelector(".nav-bar") as HTMLElement;
-  renderNavbar(navBar,"profile");
- 
+  const navBar = document.querySelector(".nav-bar") as HTMLElement;
+  renderNavbar(navBar, "profile");
 
   if (accessToken) {
     try {
@@ -63,14 +63,14 @@ document.addEventListener("DOMContentLoaded", async function (e) {
         updateButton.style.display = "none";
         deleteButton.style.display = "none";
 
-        const responseUser= await http({
+        const responseUser = await http({
           url: "/user/",
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
           method: "GET",
         });
-        fullName.value=responseUser.data.fullname;        
+        fullName.value = responseUser.data.fullname;
       }
     } catch (error) {
       console.log(error);
@@ -82,33 +82,33 @@ document.addEventListener("DOMContentLoaded", async function (e) {
 });
 
 //Get Form Datas
-function getFormDatas(){
- registerErrorMessage.style.display = "none";
- const full_name = fullName.value.trim();
- const profession_name = profession.value.trim();
- const available_time = availableTime.value.trim();
- const minimum_charge = minimumCharge.value.trim();
- const location = Location.value.trim();
- const contact_number = contactNumber.value.trim();
- const description = Description.value.trim();
- const image=imageUpload?.files?.[0] ?? null;
+function getFormDatas() {
+  registerErrorMessage.style.display = "none";
+  const full_name = fullName.value.trim();
+  const profession_name = profession.value.trim();
+  const available_time = availableTime.value.trim();
+  const minimum_charge = minimumCharge.value.trim();
+  const location = Location.value.trim();
+  const contact_number = contactNumber.value.trim();
+  const description = Description.value.trim();
+  const image = imageUpload?.files?.[0] ?? null;
 
- return {
-   full_name,
-   profession_name,
-   available_time,
-   minimum_charge,
-   location,
-   contact_number,
-   description,
-   image
- };
+  return {
+    full_name,
+    profession_name,
+    available_time,
+    minimum_charge,
+    location,
+    contact_number,
+    description,
+    image,
+  };
 }
 
 //Add Button event
 addButton.addEventListener("click", async function (e) {
   e.preventDefault();
-  const profileData=getFormDatas();
+  const profileData = getFormDatas();
   if (
     validateInput(
       profileData.full_name,
@@ -125,13 +125,19 @@ addButton.addEventListener("click", async function (e) {
       const response = await http({
         url: "/profile/",
         data: profileData,
-        headers: { Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "multipart/form-data" },
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "multipart/form-data",
+        },
         method: "POST",
       });
       console.log(response);
       if (response.status === HttpStatusCode.Created) {
-        alert("New profile created successfully");
+        // Using SweetAlert for the success message
+        await Swal.fire({
+          icon: "success",
+          title: "New profile created successfully",
+        });
         window.location.href = "/views/LandingPage/";
       }
     } catch (error: any) {
@@ -148,7 +154,7 @@ addButton.addEventListener("click", async function (e) {
 //Update Button event
 updateButton.addEventListener("click", async function (e) {
   e.preventDefault();
-  const profileData=getFormDatas();
+  const profileData = getFormDatas();
   if (
     validateInput(
       profileData.full_name,
@@ -161,17 +167,28 @@ updateButton.addEventListener("click", async function (e) {
     )
   ) {
     try {
-      console.log(profileData);
-      
       await http({
         url: "/profile/",
         data: profileData,
-        headers: { Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "multipart/form-data" },
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "multipart/form-data",
+        },
         method: "PUT",
       });
-      alert("Profile updated successfully");
-      window.location.href = "/views/Profile/";
+
+      // Using SweetAlert for the success message
+      Swal.fire({
+        icon: "success",
+        title: "Profile updated successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      // Redirect after a short delay
+      setTimeout(() => {
+        window.location.href = "/views/Profile/";
+      }, 1500);
     } catch (error: any) {
       registerErrorMessage.style.display = "block";
       if (error.response) {
@@ -186,19 +203,40 @@ updateButton.addEventListener("click", async function (e) {
 //Delete Button Event
 deleteButton.addEventListener("click", async function (e) {
   e.preventDefault();
-  try {
-    await http({
-      url: "/profile/",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-      method: "DELETE",
-    });
-  } catch (error: any) {
-    if (error.response) {
-      registerErrorMessage.textContent = error.response.data.message;
-      registerErrorMessage.style.display = "block";
-      window.location.href="/views/Profile/";
+
+  // Using SweetAlert for the confirmation dialog
+  const confirmation = await Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, delete it!",
+  });
+
+  if(confirmation.isConfirmed){
+    try {
+      await http({
+        url: "/profile/",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        method: "DELETE",
+      });
+
+      // Using SweetAlert for the success message
+      await Swal.fire({
+        icon: 'success',
+        title: 'Profile deleted successfully',
+      });
+
+      window.location.href = "/views/Profile/";
+    } catch (error: any) {
+      if (error.response) {
+        registerErrorMessage.textContent = error.response.data.message;
+        registerErrorMessage.style.display = "block";
+      }
     }
   }
 });

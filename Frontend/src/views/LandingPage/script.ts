@@ -75,8 +75,6 @@ function addCards(profiles: []) {
   container.innerHTML = ``;
 
   profiles.forEach((profile: any) => {
-    console.log(profile);
-
     //Create profile card container
     const profileCard = document.createElement("div");
     profileCard.className = "profile-card";
