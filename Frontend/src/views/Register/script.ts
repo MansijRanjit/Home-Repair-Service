@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import axios, { HttpStatusCode } from "axios";
 
 const registerForm=document.querySelector(".login-form") as HTMLFormElement;
@@ -33,7 +34,11 @@ registerForm.addEventListener("submit",async (e)=>{
       });
       console.log(response);  
       if(response.status === HttpStatusCode.Created){
-        alert("User registration successsful");
+        // Using SweetAlert for the success message
+        await Swal.fire({
+          icon: "success",
+          title: "User registration successsful",
+        });
         window.location.href="/views/Login/"
       }
     } catch (error:any) {

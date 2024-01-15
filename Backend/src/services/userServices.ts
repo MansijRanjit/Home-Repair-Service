@@ -12,9 +12,9 @@ export async function getUserById(id:number){
 
 export async function getUserByUsername(username:string){
   const user = await UserModel.getUserByUsername(username);
-  // if(!user){
-  //   throw new NotFoundError("User Not Found");
-  // }
+  if(!user){
+    throw new NotFoundError("User Not Found");
+  }
   return user;
 }
 

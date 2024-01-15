@@ -121,7 +121,6 @@ addButton.addEventListener("click", async function (e) {
     )
   ) {
     try {
-      console.log(profileData);
       const response = await http({
         url: "/profile/",
         data: profileData,

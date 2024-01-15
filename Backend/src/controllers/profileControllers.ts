@@ -49,24 +49,20 @@ export async function createProfile(req:any,res:Response){
       location:req.body.location,
       contact_number:req.body.contact_number,
     }
-    //const profileData:IProfile=req.body;
-    //console.log(profileData);
     if(req.file){
       profileData.image=req.file.path;
     }else{
       profileData.image="src/uploads/default.png";
     }
 
-    const professionData={
+    const professionData:IProfession={
       profession_name:req.body.profession_name
     }
-    //const professionData:IProfession=req.body;
-    //console.log(professionData);
-    
-    const newProfile = await profileServices.createProfile(user.id,fullName,profileData,professionData);
+  
+    await profileServices.createProfile(user.id,fullName,profileData,professionData);
     res.status(HttpStatus.CREATED).json({message:"New User Created succcefflly"});
   } catch (error) {
-    //console.error('Error in creatingprofile',error);
+    console.error('Error in creatingprofile',error);
     res.status(500).json({ message: "Something went wrong" });
   }
 }
@@ -84,16 +80,15 @@ export async function updateProfile(req:any, res:Response){
       location:req.body.location,
       contact_number:req.body.contact_number,
     }
-    //console.log(req.file);
     if(req.file){
       profileData.image=req.file.path;
     }
     
-    const professionData={
+    const professionData:IProfession={
       profession_name:req.body.profession_name
     }
 
-    const updatedProfile = await profileServices.updateProfile(user.id,fullName,profileData,professionData);
+    await profileServices.updateProfile(user.id,fullName,profileData,professionData);
     res.json({message:"Profile updated successfully"});
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });
@@ -104,7 +99,7 @@ export async function deleteProfile(req:any, res:Response){
   try {
     const user = req.user;
 
-    const deletedProfile= await profileServices.deleteProfile(user.id);
+    await profileServices.deleteProfile(user.id);
     res.json({message:"Profile deleted successfully"});
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });

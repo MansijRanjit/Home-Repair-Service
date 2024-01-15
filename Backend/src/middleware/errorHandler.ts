@@ -20,7 +20,7 @@ export function genericErrorHandler(
   err: Error,
   _req: Request,
   res: Response,
-  _next: NextFunction // eslint-disable-line
+  _next: NextFunction 
 ) {
   if (err.stack) {
     logger.error(err.stack);

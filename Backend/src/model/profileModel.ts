@@ -46,7 +46,6 @@ export default class ProfileModel extends BaseModel {
     }
 
     const resultData= await query;
-    //console.log(resultData);
     
     return resultData;
   }
@@ -92,8 +91,6 @@ export default class ProfileModel extends BaseModel {
         })
         .returning("profile_id");
 
-      //console.log(profile,typeof(profile));
-
       // Insert into 'professions' table
       await trx("professions").insert({
         profession_name: professionData.profession_name,
@@ -123,8 +120,6 @@ export default class ProfileModel extends BaseModel {
       const [profile] = await trx("profiles")
         .where({ user_id: userId })
         .returning("profile_id");
-
-      //console.log(profile,typeof(profile));
 
       //Update profiles table:
       await trx("profiles").where({ user_id: userId }).update({

@@ -24,10 +24,6 @@ export async function createProfile(userId:number,fullName:string,profileData:IP
     throw new BadRequestError("Profile already exist")
   }
 
-  // const newProfile={
-  //   user_id:userId,
-  //   ...profileData
-  // }
   return ProfileModel.createProfile(userId,fullName,profileData,professionData);
 }
 
