@@ -18,14 +18,14 @@ export function seed(knex: Knex): Promise<void> {
           username: "Mansij",
           email: "mansij@gmail.com",
           password:
-            "$2b$10$klqidHcFcYvL.jlxiHMjIeSLHtUKt55B1HP3SmQ.p1CYYybMZpVwy",
+            "$2b$10$klqidHcFcYvL.jlxiHMjIeSLHtUKt55B1HP3SmQ.p1CYYybMZpVwy", //123456
         },
         {
           fullname:"Ram kumar",
           username: "Raam",
           email: "ram@gmail.com",
           password:
-            "$2b$10$RP02bKlbB.yeTiJDuCXG6uKDItfXLxshGW2zfc7YTkOcQOLE0xJUi",
+            "$2b$10$RP02bKlbB.yeTiJDuCXG6uKDItfXLxshGW2zfc7YTkOcQOLE0xJUi", //123456
         },
       ]);
     });

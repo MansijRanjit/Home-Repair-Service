@@ -7,6 +7,8 @@ import { genericErrorHandler, notFoundError } from "./middleware/errorHandler";
 
 const app = express();
 
+app.use('/src/uploads',express.static('src/uploads'));
+
 app.use(cors());
 
 app.use(express.json());

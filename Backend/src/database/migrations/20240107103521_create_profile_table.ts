@@ -14,15 +14,17 @@ export async function up(knex: Knex): Promise<void> {
 
     table.bigIncrements("profile_id").primary();
 
-    table.string("description");
+    table.string("description").notNullable();
 
     table.string("available_time").notNullable();
+
+    table.string("image");
 
     table.string("minimum_charge").notNullable();
 
     table.string("location").notNullable();
 
-    table.string("contact_number").notNullable;
+    table.string("contact_number").notNullable();
 
     table
       .bigInteger('user_id')

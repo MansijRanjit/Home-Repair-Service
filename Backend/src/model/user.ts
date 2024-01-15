@@ -24,6 +24,7 @@ export default class UserModel extends BaseModel {
         username: "username",
         email: "email",
         password: "password",
+        fullname:"fullname"
       })
       .from("users")
       .where({ id })

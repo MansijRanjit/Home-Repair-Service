@@ -13,6 +13,7 @@ export default class ProfileModel extends BaseModel {
         minimum_charge: "profiles.minimum_charge",
         location: "profiles.location",
         contact_number: "profiles.contact_number",
+        image:"profiles.image",
         profession_name: "professions.profession_name",
       })
       .from("profiles")
@@ -30,6 +31,7 @@ export default class ProfileModel extends BaseModel {
       minimum_charge: "profiles.minimum_charge",
       location: "profiles.location",
       contact_number: "profiles.contact_number",
+      image:"profiles.image",
       profession_name: "professions.profession_name",
     })
     .from("profiles")
@@ -60,6 +62,7 @@ export default class ProfileModel extends BaseModel {
         minimum_charge: "profiles.minimum_charge",
         location: "profiles.location",
         contact_number: "profiles.contact_number",
+        image:"profiles.image",
         profession_name: "professions.profession_name",
       })
       .from("profiles")
@@ -85,6 +88,7 @@ export default class ProfileModel extends BaseModel {
           location: profileData.location,
           contact_number: profileData.contact_number,
           user_id: userId,
+          image:profileData.image
         })
         .returning("profile_id");
 
@@ -129,6 +133,7 @@ export default class ProfileModel extends BaseModel {
         minimum_charge: profileData.minimum_charge,
         location: profileData.location,
         contact_number: profileData.contact_number,
+        image:profileData.image
       });
 
       //Update professions table based on the retrieved profile_id

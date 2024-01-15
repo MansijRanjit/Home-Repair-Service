@@ -42,7 +42,7 @@ export async function createProfile(req:any,res:Response){
 
     const fullName=req.body.full_name;
 
-    const profileData={
+    const profileData:IProfile={
       description:req.body.description,
       available_time:req.body.available_time,
       minimum_charge:req.body.minimum_charge,
@@ -51,7 +51,12 @@ export async function createProfile(req:any,res:Response){
     }
     //const profileData:IProfile=req.body;
     //console.log(profileData);
-    
+    if(req.file){
+      profileData.image=req.file.path;
+    }else{
+      profileData.image="src/uploads/default.png";
+    }
+
     const professionData={
       profession_name:req.body.profession_name
     }
@@ -72,14 +77,18 @@ export async function updateProfile(req:any, res:Response){
 
     const fullName=req.body.full_name;
 
-    const profileData={
+    const profileData:IProfile={
       description:req.body.description,
       available_time:req.body.available_time,
       minimum_charge:req.body.minimum_charge,
       location:req.body.location,
       contact_number:req.body.contact_number,
     }
-
+    //console.log(req.file);
+    if(req.file){
+      profileData.image=req.file.path;
+    }
+    
     const professionData={
       profession_name:req.body.profession_name
     }

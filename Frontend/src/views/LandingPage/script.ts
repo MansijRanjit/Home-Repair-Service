@@ -76,6 +76,8 @@ function addCards(profiles: []) {
   container.innerHTML = ``;
 
   profiles.forEach((profile: any) => {
+    console.log(profile);
+
     //Create profile card container
     const profileCard = document.createElement("div");
     profileCard.className = "profile-card";
@@ -84,8 +86,8 @@ function addCards(profiles: []) {
     const profilePic = document.createElement("div");
     profilePic.className = "profile-card__pic";
     const img = document.createElement("img");
-    img.src = "../../assets/images/electrician-svgrepo-com.svg";
-    img.alt = "electrician";
+    img.src = "http://localhost:4000/"+profile.image.replace(/\\/g,"/");
+    img.alt = profile.professionName;
     img.width = 190;
     img.height = 190;
     profilePic.appendChild(img);
@@ -108,7 +110,7 @@ function addCards(profiles: []) {
     //location
     const location = document.createElement("div");
     location.className = "location fieldWithIcon";
-    location.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+    location.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
       `;
     const locationText = document.createElement("p") as HTMLElement;
     locationText.textContent = profile.location;
@@ -117,7 +119,7 @@ function addCards(profiles: []) {
     //minimum charge
     const minimumCharge = document.createElement("div");
     minimumCharge.className = "minimum-charge fieldWithIcon";
-    minimumCharge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-banknote"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>`;
+    minimumCharge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-banknote"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>`;
     const chargeText = document.createElement("p");
     chargeText.textContent = profile.minimumCharge;
     minimumCharge.appendChild(chargeText);
@@ -125,7 +127,7 @@ function addCards(profiles: []) {
     //available-time
     const availableTime = document.createElement("div");
     availableTime.className = "available-time fieldWithIcon";
-    availableTime.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
+    availableTime.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9d910b" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
     const availableTimeText = document.createElement("p");
     availableTimeText.textContent = profile.availableTime;
     availableTime.appendChild(availableTimeText);
@@ -133,7 +135,7 @@ function addCards(profiles: []) {
     //contact number
     const contactNumber = document.createElement("div");
     contactNumber.className = "contact-number fieldWithIcon";
-    contactNumber.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
+    contactNumber.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
     const contactNumberText = document.createElement("p");
     contactNumberText.textContent = profile.contactNumber;
     contactNumber.appendChild(contactNumberText);

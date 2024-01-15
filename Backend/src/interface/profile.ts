@@ -4,5 +4,6 @@ export interface IProfile{
   minimum_charge:string,
   location:string,
   contact_number:string,
-  user_id?:number
+  user_id?:number,
+  image?:string
 }

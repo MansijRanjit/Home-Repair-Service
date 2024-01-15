@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async function (e) {
       });
       console.log(responseProfile);
 
-      if (responseProfile.data.userName) {
+      if (responseProfile.data.profileId) {
         fullName.value = responseProfile.data.fullName;
         profession.value = responseProfile.data.professionName;
         availableTime.value = responseProfile.data.availableTime;
@@ -63,6 +63,17 @@ document.addEventListener("DOMContentLoaded", async function (e) {
       } else {
         updateButton.style.display = "none";
         deleteButton.style.display = "none";
+
+        const responseUser= await http({
+          url: "/user/",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          method: "GET",
+        });
+        fullName.value=responseUser.data.fullname;
+        //console.log(responseUser);
+        
       }
     } catch (error) {
       console.log(error);
@@ -83,8 +94,8 @@ function getFormDatas(){
  const location = Location.value.trim();
  const contact_number = contactNumber.value.trim();
  const description = Description.value.trim();
- const image=imageUpload?.files?.[0]??null;
- console.log(image);
+ const image=imageUpload?.files?.[0] ?? null;////
+ //console.log(image);
 
  return {
    full_name,
@@ -115,9 +126,10 @@ addButton.addEventListener("click", async function (e) {
   ) {
     try {
       const response = await http({
-        url: "profile/",
+        url: "/profile/",
         data: profileData,
-        headers: { Authorization: `Bearer ${accessToken}` },
+        headers: { Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "multipart/form-data" },
         method: "POST",
       });
       //console.log(response);
@@ -152,10 +164,13 @@ updateButton.addEventListener("click", async function (e) {
     )
   ) {
     try {
+      console.log(profileData);
+      
       const response = await http({
-        url: "profile/",
+        url: "/profile/",
         data: profileData,
-        headers: { Authorization: `Bearer ${accessToken}` },
+        headers: { Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "multipart/form-data" },
         method: "PUT",
       });
       //console.log(response);
