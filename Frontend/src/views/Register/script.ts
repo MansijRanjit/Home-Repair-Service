@@ -33,7 +33,7 @@ registerForm.addEventListener("submit",async (e)=>{
       });
       console.log(response);  
       if(response.status === HttpStatusCode.Created){
-        //alert("User registration successsful");
+        alert("User registration successsful");
         window.location.href="/views/Login/"
       }
     } catch (error:any) {

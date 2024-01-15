@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", async function (e) {
         },
         method: "GET",
       });
-      console.log(responseProfile);
 
       if (responseProfile.data.profileId) {
         fullName.value = responseProfile.data.fullName;
@@ -71,9 +70,7 @@ document.addEventListener("DOMContentLoaded", async function (e) {
           },
           method: "GET",
         });
-        fullName.value=responseUser.data.fullname;
-        //console.log(responseUser);
-        
+        fullName.value=responseUser.data.fullname;        
       }
     } catch (error) {
       console.log(error);
@@ -94,8 +91,7 @@ function getFormDatas(){
  const location = Location.value.trim();
  const contact_number = contactNumber.value.trim();
  const description = Description.value.trim();
- const image=imageUpload?.files?.[0] ?? null;////
- //console.log(image);
+ const image=imageUpload?.files?.[0] ?? null;
 
  return {
    full_name,
@@ -125,6 +121,7 @@ addButton.addEventListener("click", async function (e) {
     )
   ) {
     try {
+      console.log(profileData);
       const response = await http({
         url: "/profile/",
         data: profileData,
@@ -132,7 +129,7 @@ addButton.addEventListener("click", async function (e) {
         "Content-Type": "multipart/form-data" },
         method: "POST",
       });
-      //console.log(response);
+      console.log(response);
       if (response.status === HttpStatusCode.Created) {
         alert("New profile created successfully");
         window.location.href = "/views/LandingPage/";
@@ -166,14 +163,13 @@ updateButton.addEventListener("click", async function (e) {
     try {
       console.log(profileData);
       
-      const response = await http({
+      await http({
         url: "/profile/",
         data: profileData,
         headers: { Authorization: `Bearer ${accessToken}`,
         "Content-Type": "multipart/form-data" },
         method: "PUT",
       });
-      //console.log(response);
       alert("Profile updated successfully");
       window.location.href = "/views/Profile/";
     } catch (error: any) {
@@ -191,14 +187,13 @@ updateButton.addEventListener("click", async function (e) {
 deleteButton.addEventListener("click", async function (e) {
   e.preventDefault();
   try {
-    const response = await http({
+    await http({
       url: "/profile/",
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
       method: "DELETE",
     });
-    //console.log(response);
   } catch (error: any) {
     if (error.response) {
       registerErrorMessage.textContent = error.response.data.message;

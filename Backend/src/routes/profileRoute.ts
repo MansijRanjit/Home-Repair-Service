@@ -20,10 +20,8 @@ const upload= multer({storage:storage});
 profileRouter.get("/all",getAllProfile);
 profileRouter.get("/all/:searchData",getProfileFiltered)
 profileRouter.get("/",auth,getProfile);
-profileRouter.post("/",auth,upload.single("image"),createProfile);
-profileRouter.put("/",auth,upload.single("image"),updateProfile);
-//profileRouter.post("/",auth,validateReqBody(createProfileSchema),createProfile);
-//profileRouter.put("/",auth,validateReqBody(createProfileSchema),updateProfile);
+profileRouter.post("/",auth,upload.single("image"),validateReqBody(createProfileSchema),createProfile);
+profileRouter.put("/",auth,upload.single("image"),validateReqBody(createProfileSchema),updateProfile);
 profileRouter.delete("/",auth,deleteProfile);
 
 export default profileRouter;

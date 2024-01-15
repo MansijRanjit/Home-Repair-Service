@@ -316,6 +316,10 @@ body, input {
   font-family: "Poppins", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 .login-container {
   background-image: url("../../../assets/images/Handyman-Repairs.png");
   background-size: cover;
@@ -689,6 +693,7 @@ body, input {
   justify-content: center;
   align-items: center;
   padding: 130px 260px;
+  background-color: rgb(245, 245, 245);
 }
 @media screen and (max-width: 1024px) {
   .profile-container {
@@ -709,6 +714,7 @@ body, input {
   flex-direction: column;
   flex-wrap: wrap;
   box-sizing: border-box;
+  background-color: #FAFAFA;
 }
 .manage-profile h2 {
   color: #79BAF6;

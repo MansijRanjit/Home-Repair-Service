@@ -20,7 +20,6 @@ export const renderNavbar = async function (placeholder: HTMLElement,selected:st
       profileButton?.classList.remove("active-btn");
     }
   } catch (error) {
-    //console.log(error);
     window.location.href="/views/LandingPage/"
   }
 };

@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       url: "/profile/all",
       method: "GET",
     });
-    //console.log(response);
     const profiles = response.data;
     addCards(profiles);
 
@@ -67,7 +66,7 @@ async function findProfession() {
   addCards(profiles);
 }
 
-//add cards to display
+//Add cards to display
 function addCards(profiles: []) {
   const profileCount = document.querySelector(".profile-status") as HTMLElement;
   profileCount.innerHTML = `${profiles.length} Profiles`;

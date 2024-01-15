@@ -13,6 +13,10 @@ export const createProfileSchema = Joi.object({
     "string.min": "Profession should have at least 4 characters",
     "string.base": "Profession should be string",
   }),
+  image:Joi.string().min(4).max(255).messages({
+    "string.min": "Image should have at least 4 characters",
+    "string.base": "Image should be string",
+  }),
   available_time:Joi.string().required().min(4).max(255).messages({
     "any.required": "Available Time is required",
     "string.empty": "Available Time cannot be empty",

@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   padding: 130px 260px;
+  background-color: rgb(245, 245, 245);
 
   @include tablet{
     padding: 330px 200px;
@@ -20,6 +21,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   box-sizing: border-box;
+  background-color: #FAFAFA;
   h2{
     color:#79BAF6;
     @include mobile{
