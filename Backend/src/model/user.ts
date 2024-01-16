@@ -43,4 +43,5 @@ export default class UserModel extends BaseModel {
   static async deleteUser(id:number){
     return this.queryBuilder().table("users").where({id}).del();
   }
+
 }
